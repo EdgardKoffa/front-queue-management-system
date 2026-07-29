@@ -1,0 +1,66 @@
+<div pClass=" flex flex-col w-fit ">
+    <h2  pClass="page-title ">
+    {{labels.dashboard}}
+</h2>
+
+<div pClass="cards">
+
+    <app-stat-card
+
+        [title]="labels.statCardTicket.titleInWaitTicket"
+
+        [value]="summary()?.waitingTickets??0"
+
+        icon="pi pi-ticket">
+
+    </app-stat-card>
+
+    <app-stat-card
+
+        [title]="labels.statCardTicket.titleServedTicket"
+
+        [value]="summary()?.completedTickets??0"
+
+        icon="pi pi-check-circle">
+
+    </app-stat-card>
+
+    <app-stat-card
+
+        [title]="labels.statCardTicket.openedCounter"
+
+        [value]="summary()?.activeCounters??0"
+
+        icon="pi pi-desktop">
+
+    </app-stat-card>
+
+    <app-stat-card
+
+        [title]="labels.statCardTicket.avgTime"
+
+        [value]="summary()?.averageWaitingTime??0"
+
+        icon="pi pi-clock">
+
+    </app-stat-card>
+
+</div>
+
+<div class="charts">
+
+<app-hourly-chart
+
+    [options]="hourlyOptions">
+
+</app-hourly-chart>
+
+    <app-service-chart
+
+        [options]="serviceOptions">
+
+    </app-service-chart>
+
+</div>
+
+</div>

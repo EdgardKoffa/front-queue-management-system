@@ -1,0 +1,20 @@
+<aside class="sidebar"
+[class.collapsed]="layout.sidebarCollapsed()"
+>
+
+    <div class="sidebar-header">
+        <img
+            src="/images/logo95.png"
+            [alt]="applabels.name"
+            class="logo">
+
+        <h2 >{{applabels.name}}</h2>
+        <span i18n>{{applabels.title}} </span>
+
+    </div>
+
+    <p-panelMenu
+        [model]="items()">
+    </p-panelMenu>
+
+</aside>

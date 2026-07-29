@@ -1,0 +1,23 @@
+export enum PermissionEnum {
+    COUNTER_OPEN="COUNTER_OPEN",
+	COUNTER_CLOSE="COUNTER_CLOSE",
+	COUNTER_ASSIGN="COUNTER_ASSIGN",
+	COUNTER_RELEASE="COUNTER_RELEASE",
+	TICKET_CREATE="TICKET_CREATE",
+	TICKET_CALL="TICKET_CALL",//("Autorisation pour appeler un ticket"),
+	TICKET_TRANSFER="TICKET_TRANSFER",//("Autorisation pour transferer un ticket vers un autre guichet"),
+	TICKET_FINISH="TICKET_FINISH",//("Autorisation pour completer un ticket"),
+	TICKET_CANCEL="TICKET_CANCEL",//("Autorisation pour annuler un ticket"),
+	VIEW_DASHBOARD="VIEW_DASHBOARD",//("Autorisation pour avoir acces au tableu de bord"),
+	//MANAGE_APPOINTMENTS("Autorisation pour  un guichet"),
+	MANAGE_BRANCHS="MANAGE_BRANCHS",//("Autorisation pour gerer une agence"),
+	MANAGE_SERVICE="MANAGE_SERVICE",//("Autorisation pour gerer un service"),
+	MANAGE_AGENCY="MANAGE_AGENCY",//("Autorisation pour gerer l'agence principale"),
+	VIEW_REPORTS="VIEW_REPORTS",//("Voir les rapports"),
+	VIEW_DETAIL="VIEW_DETAIL",//("Voir les details"),
+	VIEW_LIST="VIEW_LIST",//("Autorisation pour visualiser les listes"),
+	MANAGE_USERS="MANAGE_USERS",//("Autorisation pour gestion des utilisateurs"),
+	MANAGE_ROLES="MANAGE_ROLES",//("Autorisation pour gestion  des roles et permission"),
+	SEND_NOTIFICATION="SEND_NOTIFICATION",//("Envoyer un message"),
+	VIEW_DISPLAY="VIEW_DISPLAY",//("Affichager sur ecran: LED, KISOK...")
+}

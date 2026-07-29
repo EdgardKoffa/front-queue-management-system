@@ -1,0 +1,47 @@
+<div pClass="topbar w-[98%] bg-[()]">
+
+    <div class="left">
+
+        <p-button
+            icon="pi pi-bars"
+            severity="secondary"
+            size="large"
+            text="true"
+             (onClick)="layout.toggleSidebar()"
+            >
+            
+        </p-button>
+
+        <h3 >{{menu_labels.DASHBOARD}}</h3>
+
+    </div>
+
+    <div class="right">
+        <p-toggleswitch
+        (onChange)="toggleThemeMode()"
+        >
+        </p-toggleswitch>
+        <p-button
+            icon="pi pi-bell"
+            severity="secondary"
+            size="large"
+            text="true">
+        </p-button>
+
+        <p-avatar
+            icon="pi pi-user"
+            shape="circle"
+            size="normal"
+            [label]="currentUser()?.lastname?.slice(0,1)?.concat(currentUser()?.firstname?.slice(0,1)!)"
+            >
+        </p-avatar>
+
+        <p-button severity="contrast" >
+            {{currentUser()?.firstname}}
+
+            {{currentUser()?.lastname}}
+        </p-button>
+
+    </div>
+
+</div>

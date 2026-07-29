@@ -1,0 +1,27 @@
+@import "tailwindcss";
+@import "tailwindcss-primeui";
+@import "primeicons/primeicons.css";
+
+
+@custom-variant dark (&:where(.my-app-dark, .my-app-dark *));
+ /* dark mode configuration*/
+
+/* Styles globaux */
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Inter, Roboto, "Helvetica Neue", sans-serif;
+    background: #89b3f3;
+}
+/* Reset */
+
+* {
+    box-sizing: border-box;
+}
+/* You can add global styles to this file, and also import other style files */
