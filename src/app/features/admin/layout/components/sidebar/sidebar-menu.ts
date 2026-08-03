@@ -1,12 +1,15 @@
 import { MenuItem } from 'primeng/api';
 import { MENU_LABELS } from '../../../../../shared/constants';
+import { RoutesBaseNames } from '../../../../../configuration/routes.config';
 
 export const SIDEBAR_MENU: MenuItem[] = [
 
     {
         label: MENU_LABELS.DASHBOARD,
         icon: 'pi pi-home',
-        routerLink: '/admin/dashboard'
+        routerLink:'dashboard',
+        title:MENU_LABELS.DASHBOARD,
+        
     },
 
     {
@@ -19,19 +22,24 @@ export const SIDEBAR_MENU: MenuItem[] = [
             {
                 label:MENU_LABELS.AGENCY ,
                 icon: 'pi pi-building-columns',
-                routerLink: '/admin/agencies'
+                routerLink: RoutesBaseNames.AGENCY
+            },
+            {
+                label:MENU_LABELS.BRANCH ,
+                icon: 'pi pi-warehouse',
+                routerLink: RoutesBaseNames.BRANCH
             },
 
             {
                 label:MENU_LABELS.COUNTER ,
                 icon: 'pi pi-desktop',
-                routerLink: '/admin/counters'
+                routerLink: RoutesBaseNames.COUNTER
             },
 
             {
                 label: MENU_LABELS.BANK_SERVICE,
                 icon: 'pi pi-list',
-                routerLink: '/admin/services'
+                routerLink: RoutesBaseNames.COUNTER+'/services'
             }
 
         ]
@@ -42,7 +50,7 @@ export const SIDEBAR_MENU: MenuItem[] = [
 
         icon: 'pi pi-ticket',
 
-        routerLink: '/admin/tickets'
+        routerLink: RoutesBaseNames.COUNTER//+'/ticket'
     },
 
     {
@@ -50,7 +58,7 @@ export const SIDEBAR_MENU: MenuItem[] = [
 
         icon: 'pi pi-users',
 
-        routerLink: '/admin/users'
+        routerLink: RoutesBaseNames.ADMIN+'/users'
     },
 
     {
@@ -58,7 +66,7 @@ export const SIDEBAR_MENU: MenuItem[] = [
 
         icon: 'pi pi-chart-bar',
 
-        routerLink: '/admin/reports'
+        routerLink:RoutesBaseNames.ADMIN+'/reports'
     },
 
     {
@@ -66,7 +74,7 @@ export const SIDEBAR_MENU: MenuItem[] = [
 
         icon: 'pi pi-cog',
 
-        routerLink: '/admin/settings'
+        routerLink: RoutesBaseNames.ADMIN+'settings'
     }
 
 ];
@@ -79,7 +87,7 @@ export const COUNTER_SIDEBAR_MENU:MenuItem[]=[
 
                 icon:'pi pi-home',
 
-                routerLink:'/counter'
+                routerLink:RoutesBaseNames.COUNTER
 
             },
 
@@ -89,7 +97,7 @@ export const COUNTER_SIDEBAR_MENU:MenuItem[]=[
 
                 icon:'pi pi-volume-up',
 
-                routerLink:'/counter/call'
+                routerLink:RoutesBaseNames.COUNTER+'/call'
 
             },
 
@@ -99,7 +107,7 @@ export const COUNTER_SIDEBAR_MENU:MenuItem[]=[
 
                 icon:'pi pi-history',
 
-                routerLink:'/counter/history'
+                routerLink:RoutesBaseNames.COUNTER+'/history'
 
             }
 

@@ -2,7 +2,7 @@ import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 
 import { SessionService } from '../../features/auth/services/session.service';
-import { RoutesConfig } from '../../configuration/routes.config';
+import { RoutesBaseNames } from '../../configuration/routes.config';
 import { NavigationService } from '../services/navigation.service';
 import { RoleEnum } from '../../features/auth/enums/role-enum';
 
@@ -17,7 +17,7 @@ export const roleGuard: CanActivateFn = (route) => {
  // const user = sessionService.getUser();
 console.log("in roleGuard",route.data)
   if (!sessionService.isAuthenticated()) {
-//console.log("in roleGuard isAuthenticated",sessionService.isAuthenticated())
+console.log("in roleGuard isAuthenticated",sessionService.isAuthenticated())
     router.goToLogin();
 
     return false;

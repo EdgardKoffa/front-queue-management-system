@@ -1,24 +1,25 @@
 import { Routes } from '@angular/router';
-import { RoutesConfig } from './configuration/routes.config';
+import { RoutesBaseNames } from './configuration/routes.config';
 import { authGuard } from './core/guards/auth-guard';
 import { roleGuard } from './core/guards/role-guard';
 import { RoleEnum } from './features/auth/enums/role-enum';
 
+/* Apps route urls to pages */
 export const routes: Routes = [
    {
     path: '',
-    redirectTo: RoutesConfig.LOGIN,
+    redirectTo: RoutesBaseNames.LOGIN,
     pathMatch: 'full'
   },
 
   {
-    path: RoutesConfig.LOGIN,
+    path: RoutesBaseNames.LOGIN,
     loadComponent: () =>
       import('./features/auth/pages/login/login')
         .then(m => m.Login)
   },
   {
-    path: RoutesConfig.ADMIN,
+    path: RoutesBaseNames.ADMIN,
     canActivate:[authGuard,roleGuard],
     data:{
       roles:[
@@ -33,34 +34,44 @@ export const routes: Routes = [
 
         {
             path:'dashboard',
+            canActivate:[authGuard,roleGuard],
+    data:{
+      roles:[
+        RoleEnum.ADMIN,
+        RoleEnum.SUPER_ADMIN
+      ]
+    },
             loadComponent:()=>import(
                 './features/admin/dashboard/dashboard'
             ).then(c=>c.Dashboard)
         },
 
+   {
+    path: RoutesBaseNames.AGENCY,
+     canActivate:[authGuard,roleGuard],
+    data:{
+      roles:[
+        RoleEnum.ADMIN,
+        RoleEnum.SUPER_ADMIN
+      ]
+    },  
+     loadChildren: () =>import(
+      './features/admin/agencies/agency.routes'
+    ).then(m => m.AGENCY_ROUTES)
+  },
+
         {
             path:'',
             redirectTo:'dashboard',
             pathMatch:'full'
-        }
+        },
+       
 
     ]
 
   },
-/* 
-  {
-    path: RoutesConfig.COUNTER,
-     canActivate:[authGuard,roleGuard],
-    data:{
-      roles:[
-        RoleEnum.OPERATOR,
-      ]
-    },
-    loadComponent: () =>
-      import('./layouts/counter/counter-layout/counter-layout')
-        .then(m => m.CounterLayout)
-  },
 
+/* 
   {
     path: RoutesConfig.KIOSK,
      canActivate:[authGuard,roleGuard],

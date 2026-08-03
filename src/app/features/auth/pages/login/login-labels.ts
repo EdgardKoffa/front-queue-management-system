@@ -16,6 +16,10 @@ export const LABELS={
         openedCounter:isFR?"Guichets ouverts":"Opened counters",
         closedCounter:isFR?"Guichets fermés":"Closed counters",
         avgTime:isFR?"Temps moyen":"Average time"
-    }
+    },
+    hour:isFR?"Heure":"Hour",
+    hours:isFR?"Heures":"Hours",
+    status:isFR?"Statut":"Status",
+    counter:isFR?"Guichet":"Counter"
 
 }

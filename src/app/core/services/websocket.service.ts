@@ -54,10 +54,11 @@ export class WebSocketService {
     }
 
     disconnect(){
-
+        if(this.client&&this.client.active){
         this.client.deactivate();
 
         this.connected.set(false);
+    }
 
     }
 

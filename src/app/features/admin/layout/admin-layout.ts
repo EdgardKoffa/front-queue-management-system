@@ -13,6 +13,7 @@ import { PRIMENG_IMPORTS } from '../../../shared/primeNG/primeng.imports';
     Sidebar,
         Topbar,
         Footer,
+        
        ...PRIMENG_IMPORTS
 
   ],

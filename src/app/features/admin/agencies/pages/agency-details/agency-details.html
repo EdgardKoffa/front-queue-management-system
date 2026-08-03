@@ -1,0 +1,15 @@
+<app-page-header
+
+    (action)="backward()" 
+    [title]="header_labels.title[1]" 
+    [subtitle]="header_labels.subtitle" 
+    [buttonLabel]="header_labels.backLabel">
+
+</app-page-header>
+<app-agency-detail
+    [formTitle]="header_labels.detail_formTittle"
+    [agency]="agency()"
+    [errorMessage]="errorMessage()"
+    >
+</app-agency-detail>
+

@@ -1,4 +1,7 @@
-export const RoutesConfig = {
+/* 
+Front main pages route names
+*/
+export const RoutesBaseNames = {
 
     LOGIN:"login",
 
@@ -12,8 +15,9 @@ export const RoutesConfig = {
 
     ADVERTISING:"advertising",
 
-    //SERVICE:'service',
+    SERVICE:'service',
 
-  //  BRANCH:""
+  AGENCY:"agencies",//agency=>branche
+  BRANCH:"branches",//agency=>branche
 
 } as const;

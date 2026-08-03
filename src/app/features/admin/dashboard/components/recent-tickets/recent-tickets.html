@@ -1,0 +1,72 @@
+
+<div class="mb-4 flex gap-1">
+  
+</div>
+
+<p-table
+
+    [value]="tickets()"
+    stripedRows
+    [paginator]="true" 
+    [rows]="5" 
+    [lazy]="true"
+    [rowsPerPageOptions]="[10, 25, 50]"
+    [tableStyle]="{'min-width':'100%'}"
+    [showCurrentPageReport]="true"
+   
+    [scrollable]="true" scrollHeight="400px"
+    >
+
+    <ng-template pTemplate="header">
+
+        <tr>
+
+            <th>Ticket</th>
+
+            <th>Service</th>
+
+            <th>{{labels.counter}}</th>
+
+            <th>{{labels.status}}</th>
+
+            <th>{{labels.hour}}</th>
+
+        </tr>
+
+    </ng-template>
+
+    <ng-template
+        pTemplate="body"
+        let-ticket>
+
+        <tr>
+
+            <td>{{ticket.number}}</td>
+
+            <td>{{ticket.service}}</td>
+
+            <td>{{ticket.counter}}</td>
+
+            <td>
+
+                <p-tag
+
+                    [value]="ticket.status"
+
+                    [severity]="getSeverity(ticket.status)">
+
+                </p-tag>
+
+            </td>
+
+            <td>
+
+                {{ticket.createdAt}}
+
+            </td>
+
+        </tr>
+
+    </ng-template>
+
+</p-table>

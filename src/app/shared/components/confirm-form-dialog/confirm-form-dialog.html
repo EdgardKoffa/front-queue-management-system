@@ -1,0 +1,47 @@
+@if (config) {
+  <p-dialog 
+    [header]="config.title!" 
+    [(visible)]="visible" 
+    [modal]="true" 
+    [style]="{ width: '400px', minWidth: '300px' ,minHeight: '250px'}"
+    [draggable]="false"
+    [resizable]="true"
+    (onHide)="onCancel()">
+
+    <div class="flex flex-column gap-2 py-4 px-3 w-full">
+      @if (config.message) {
+        <p class="m-0 dark:text-emerald-100 text-blue-800">{{ config.message }}</p>
+      
+      }
+
+      <p-select 
+     
+        [options]="config.options" 
+        [ngModel]="selectedValue()"
+        (ngModelChange)="selectedValue.set($event)"
+        optionLabel="label" 
+        optionValue="value"
+        [placeholder]="config.placeholder!" 
+        styleClass="w-full">
+      </p-select>
+    </div>
+  <div class="flex w-full flex-row gap-12 justify-end my-4">
+      <p-button 
+        [label]="config.cancelButtonLabel!" 
+        icon="pi pi-times" 
+        [text]="true" 
+        severity="secondary" 
+        (onClick)="onCancel()">
+      </p-button>
+
+      <p-button 
+        [label]="config.confirmButtonLabel!" 
+        icon="pi pi-check" 
+        [severity]="config.confirmButtonSeverity" 
+        [disabled]="selectedValue() === null || selectedValue() === undefined" 
+        (onClick)="onConfirm()">
+      </p-button>
+  
+</div>
+  </p-dialog>
+}

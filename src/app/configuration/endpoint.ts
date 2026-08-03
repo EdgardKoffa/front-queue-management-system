@@ -1,9 +1,9 @@
 import { ApplicationConfig } from './application.config';
-
+/* REST API s endpoints */
 const API = ApplicationConfig.apiBaseUrl;
 
 export const Endpoints = {
-
+  base_url:API,
   auth: {
 
     login: `${API}/auth/login`,

@@ -2,6 +2,7 @@ import { MenuItem } from 'primeng/api';
 import { RoleEnum } from '../../../../auth/enums/role-enum';
 import { COUNTER_SIDEBAR_MENU, SIDEBAR_MENU } from './sidebar-menu';
 import { MENU_LABELS } from '../../../../../shared/constants';
+import { RoutesBaseNames } from '../../../../../configuration/routes.config';
 
 export class MenuFactory {
 
@@ -69,7 +70,7 @@ export class MenuFactory {
 
                 icon:'pi pi-images',
 
-                routerLink:'/advertising'
+                routerLink:RoutesBaseNames.ADVERTISING
 
             }
 

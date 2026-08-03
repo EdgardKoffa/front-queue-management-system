@@ -1,0 +1,15 @@
+<app-page-header
+
+    (action)="backward()" 
+    [title]="header_labels.title[1]" 
+    [subtitle]="header_labels.subtitle" 
+    [buttonLabel]="header_labels.backLabel">
+
+</app-page-header>
+<app-agency-form
+
+    [agency]="agency()"
+    [formTitle]="header_labels.edit_formTittle"
+    (save)="update($event)">
+
+</app-agency-form>

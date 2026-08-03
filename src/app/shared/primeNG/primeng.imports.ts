@@ -22,7 +22,11 @@ import { AvatarModule } from 'primeng/avatar';
 import { RouterModule } from '@angular/router';
 import { PanelMenuModule } from 'primeng/panelmenu';
 import { ToggleSwitch } from 'primeng/toggleswitch';
-import { PieChart } from 'echarts/charts';
+import { TableModule } from 'primeng/table';
+import { TagModule } from 'primeng/tag';
+import { TabsModule } from 'primeng/tabs';
+import { SelectModule } from 'primeng/select';
+
 
 export const PRIMENG_IMPORTS = [
   ButtonModule,
@@ -48,4 +52,8 @@ export const PRIMENG_IMPORTS = [
   PanelMenuModule,
   PanelMenuModule,
   ToggleSwitch,
+  TableModule,
+  TagModule,
+  TabsModule,
+  SelectModule,
 ] as const;

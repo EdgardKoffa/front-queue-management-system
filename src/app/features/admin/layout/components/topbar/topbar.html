@@ -1,4 +1,4 @@
-<div pClass="topbar w-[98%] bg-[()]">
+<div class="topbar dark:text-blue-400">
 
     <div class="left">
 
@@ -21,13 +21,25 @@
         (onChange)="toggleThemeMode()"
         >
         </p-toggleswitch>
+       
         <p-button
             icon="pi pi-bell"
             severity="secondary"
             size="large"
             text="true">
         </p-button>
-
+          <p-menu 
+          #menu
+       [popup]="true"
+       [model]="items"
+       
+       />
+        <p-button 
+        severity="contrast"
+        [outlined]="true"
+        (onClick)="menu.toggle($event)"
+        size="small"
+        class="flex flex-row gap-3">
         <p-avatar
             icon="pi pi-user"
             shape="circle"
@@ -36,12 +48,12 @@
             >
         </p-avatar>
 
-        <p-button severity="contrast" >
+        <span class="text-gray-600 dark:text-zinc-200" >
             {{currentUser()?.firstname}}
 
             {{currentUser()?.lastname}}
-        </p-button>
-
+        </span>
+</p-button>
     </div>
 
 </div>

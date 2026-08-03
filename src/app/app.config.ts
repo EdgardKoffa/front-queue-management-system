@@ -6,7 +6,7 @@ import { provideHttpClient, withInterceptors } from '@angular/common/http';
 import { authInterceptor } from './core/interceptors/auth-interceptor';
 import Aura from '@primeuix/themes/aura';
 import { providePrimeNG } from 'primeng/config';
-import { MessageService } from 'primeng/api';
+import { MessageService,ConfirmationService } from 'primeng/api';
 import { loadingInterceptor } from './core/interceptors/loading-interceptor';
 import { errorInterceptor } from './core/interceptors/error-interceptor';
 import { provideEchartsCore } from 'ngx-echarts';
@@ -66,6 +66,7 @@ export const appConfig: ApplicationConfig = {
       }
     }),
     MessageService,
+    ConfirmationService,
     provideEchartsCore({echarts})
   ]
 };

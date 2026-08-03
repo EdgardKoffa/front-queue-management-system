@@ -1,6 +1,6 @@
 import { inject, Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { RoutesConfig } from '../../configuration/routes.config';
+import { RoutesBaseNames } from '../../configuration/routes.config';
 
 @Injectable({
   providedIn: 'root',
@@ -9,27 +9,35 @@ export class NavigationService {
      private readonly router = inject(Router);
 
   goToLogin(): void {
-    this.router.navigate([RoutesConfig.LOGIN]);
+    this.router.navigate([RoutesBaseNames.LOGIN]);
   }
 
   goToAdmin(): void {
-    this.router.navigate([RoutesConfig.ADMIN]);
+    this.router.navigate([RoutesBaseNames.ADMIN]);
+  }
+
+  goToAgency(endpoint?:any[]): void {
+    if(endpoint){
+    this.router.navigate([RoutesBaseNames.ADMIN,RoutesBaseNames.AGENCY,...endpoint]);
+  }else{
+     this.router.navigate([RoutesBaseNames.ADMIN,RoutesBaseNames.AGENCY]);
+  }
   }
 
   goToCounter(): void {
-    this.router.navigate([RoutesConfig.COUNTER]);
+    this.router.navigate([RoutesBaseNames.COUNTER]);
   }
 
   goToKiosk(): void {
-    this.router.navigate([RoutesConfig.KIOSK]);
+    this.router.navigate([RoutesBaseNames.KIOSK]);
   }
 
   goToDisplay(): void {
-    this.router.navigate([RoutesConfig.DISPLAY]);
+    this.router.navigate([RoutesBaseNames.DISPLAY]);
   }
 
   goToAdvertising(): void {
-    this.router.navigate([RoutesConfig.ADVERTISING]);
+    this.router.navigate([RoutesBaseNames.ADVERTISING]);
   }
  goTo400(): void {
     this.router.navigate(["/400"]);

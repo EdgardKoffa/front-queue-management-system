@@ -1,0 +1,27 @@
+<div class="activities">
+
+    @for(activity of activities(); track activity.date){
+
+        <div  class="activity">
+
+            <i class="pi pi-clock"></i>
+
+            <div>
+
+                <strong>{{activity?.user}}</strong>
+
+                <p>{{activity?.message}}</p>
+
+                <small>
+
+                    {{activity?.date}}
+
+                </small>
+
+            </div>
+
+        </div>
+
+    }
+
+</div>

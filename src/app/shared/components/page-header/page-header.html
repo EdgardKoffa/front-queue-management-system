@@ -1,0 +1,29 @@
+<div class="page-header">
+
+    <div>
+
+        <h2 class="text-2xl dark:text-blue-600 font-semibold text-primary-700">{{title()}}</h2>
+
+        @if(subtitle()){
+
+            <p class="text-gray-600 dark:text-zinc-200 font-serif">{{subtitle()}}</p>
+
+        }
+
+    </div>
+
+    @if(buttonVisible()){
+
+        <p-button
+
+            [label]="buttonLabel()"
+
+            [icon]="buttonIcon()"
+
+            (onClick)="action.emit()">
+
+        </p-button>
+
+    }
+
+</div>

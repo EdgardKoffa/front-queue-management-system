@@ -16,8 +16,18 @@ body {
 }
 
 body {
+    background-color: #89b3f3;
+    background-image: url("/images/bodybgimg.png");
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
     font-family: Inter, Roboto, "Helvetica Neue", sans-serif;
-    background: #89b3f3;
+}
+@media (prefers-color-scheme: dark) {
+  body {
+    background-color: #60686792;
+    color: #222121;
+  }
 }
 /* Reset */
 

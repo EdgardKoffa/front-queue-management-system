@@ -64,8 +64,8 @@ protected readonly items: MenuItem[] = [
 
         label:MENU_LABELS.LOGOUT,
 
-        icon:'pi pi-sign-out',
-
+        icon:'pi pi-sign-out text-red-500! dark:text-red-400! font-bold text-xl',
+        linkClass: 'text-red-500! dark:text-red-400! font-bold',
         command:()=>this.logout()
 
     }

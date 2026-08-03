@@ -1,0 +1,116 @@
+<p-card 
+[header]="formTitle()"
+class="w-full p-4">
+
+<form
+    [formGroup]="form"
+    (ngSubmit)="submit()">
+
+    <div class="grid">
+
+        <p-floatlabel>
+
+            <input
+                pInputText
+                formControlName="code">
+
+            <label>Code</label>
+
+        </p-floatlabel>
+
+        <p-floatlabel>
+
+            <input
+                pInputText
+                formControlName="name">
+
+            <label>{{forms_labels.name}}</label>
+
+        </p-floatlabel>
+
+        <p-floatlabel>
+
+            <input
+                pInputText
+                formControlName="phone">
+
+            <label>{{forms_labels.phone}}</label>
+
+        </p-floatlabel>
+
+        <p-floatlabel>
+
+            <input
+                pInputText
+                formControlName="email">
+
+            <label>Email</label>
+
+        </p-floatlabel>
+
+        <p-floatlabel>
+
+            <input
+                pInputText
+                formControlName="city">
+
+            <label>{{forms_labels.city}}</label>
+
+        </p-floatlabel>
+
+        <p-floatlabel>
+
+            <input
+                pInputText
+                formControlName="address">
+
+            <label>{{forms_labels.address}}</label>
+
+        </p-floatlabel>
+
+        <p-floatlabel>
+
+            <p-select
+                class="w-full"
+                formControlName="status"
+
+                optionLabel="label"
+
+                optionValue="value"
+
+                [options]="statusOptions">
+
+            </p-select>
+
+            <label>{{forms_labels.status}}</label>
+
+        </p-floatlabel>
+
+    </div>
+
+    <div class="actions gap-4">
+         <p-button
+            pClass="self-left"
+            type="button"
+            severity="secondary"
+            icon="pi pi-arrow-left"
+            size="large"
+            (onClick)="backToList()"
+            [label]="forms_labels.back">
+
+        </p-button>
+        <p-button
+
+            type="submit"
+
+            icon="pi pi-save"
+            size="large"
+            [label]="forms_labels.save">
+
+        </p-button>
+
+    </div>
+
+</form>
+
+</p-card>

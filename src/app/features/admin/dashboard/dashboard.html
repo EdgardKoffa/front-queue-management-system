@@ -1,66 +1,49 @@
-<div pClass=" flex flex-col w-fit ">
-    <h2  pClass="page-title ">
-    {{labels.dashboard}}
-</h2>
+<div pClass=" flex flex-col ">
+  <h2 pClass="page-title ">
+    {{ labels.dashboard }}
+  </h2>
 
-<div pClass="cards">
-
+  <div pClass="cards">
     <app-stat-card
-
-        [title]="labels.statCardTicket.titleInWaitTicket"
-
-        [value]="summary()?.waitingTickets??0"
-
-        icon="pi pi-ticket">
-
+      [title]="labels.statCardTicket.titleInWaitTicket"
+      [value]="summary()?.waitingTickets ?? 0"
+      icon="pi pi-ticket"
+    >
     </app-stat-card>
 
     <app-stat-card
-
-        [title]="labels.statCardTicket.titleServedTicket"
-
-        [value]="summary()?.completedTickets??0"
-
-        icon="pi pi-check-circle">
-
+      [title]="labels.statCardTicket.titleServedTicket"
+      [value]="summary()?.completedTickets ?? 0"
+      icon="pi pi-check-circle"
+    >
     </app-stat-card>
 
     <app-stat-card
-
-        [title]="labels.statCardTicket.openedCounter"
-
-        [value]="summary()?.activeCounters??0"
-
-        icon="pi pi-desktop">
-
+      [title]="labels.statCardTicket.openedCounter"
+      [value]="summary()?.activeCounters ?? 0"
+      icon="pi pi-desktop"
+    >
     </app-stat-card>
 
     <app-stat-card
-
-        [title]="labels.statCardTicket.avgTime"
-
-        [value]="summary()?.averageWaitingTime??0"
-
-        icon="pi pi-clock">
-
+      [title]="labels.statCardTicket.avgTime"
+      [value]="summary()?.averageWaitingTime ?? 0"
+      icon="pi pi-clock"
+    >
     </app-stat-card>
+  </div>
 
-</div>
+  <div class="charts">
+    <app-hourly-chart [options]="hourlyOptions"> </app-hourly-chart>
 
-<div class="charts">
-
-<app-hourly-chart
-
-    [options]="hourlyOptions">
-
-</app-hourly-chart>
-
-    <app-service-chart
-
-        [options]="serviceOptions">
-
-    </app-service-chart>
-
-</div>
-
+    <app-service-chart [options]="serviceOptions"> </app-service-chart>
+  </div>
+  <div class="w-full p-3">
+    <app-recent-tickets
+    [tickets]="recentTicketsData">
+    </app-recent-tickets>
+  </div>
+  <app-recent-activities>
+    [activities]="activities"
+  </app-recent-activities>
 </div>

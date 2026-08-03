@@ -1,0 +1,36 @@
+<app-page-header
+
+    (action)="createAgency()" 
+    [title]="header_labels.title[1]" 
+    [subtitle]="header_labels.subtitle" 
+    [buttonLabel]="header_labels.buttonlabel" 
+    [buttonIcon]="butonIcon()"
+    >
+
+</app-page-header>
+
+<app-data-table
+
+    [columns]="columns"
+
+    [data]="agencies()"
+
+    [loading]="loading()"
+
+    (lazyLoad)="load($event)"
+
+    [totalRecords]="totalRecords()"
+
+    (details)="detailsAgency($event)"
+
+    (edit)="editAgency($event)"
+
+    (delete)="deleteAgency($event)"
+
+    (statusAction)="agencyStatusAction($event)"
+    [statusValue]="statusValue"
+    [statusIcon]="statusIcon"
+    [statusSeverity]="statusSeverity"
+    >
+
+</app-data-table>

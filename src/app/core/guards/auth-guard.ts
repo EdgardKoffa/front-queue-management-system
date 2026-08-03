@@ -2,7 +2,7 @@ import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
 
 import { TokenService } from '../../features/auth/services/token.service';
-import { RoutesConfig } from '../../configuration/routes.config';
+import { RoutesBaseNames } from '../../configuration/routes.config';
 import { NavigationService } from '../services/navigation.service';
 
 export const authGuard: CanActivateFn = () => {

@@ -1,0 +1,16 @@
+:host {
+    display: block;
+}
+
+:host ::ng-deep .p-datatable {
+    border-radius: 12px;
+    overflow: hidden;
+}
+
+:host ::ng-deep .p-datatable-header {
+    background: transparent;
+}
+
+:host ::ng-deep .p-datatable-thead > tr > th {
+    font-weight: 600;
+}

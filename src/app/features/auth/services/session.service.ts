@@ -8,9 +8,12 @@ import { RoleEnum } from '../enums/role-enum';
 export class SessionService {
    readonly currentUser = signal<AuthenticatedUser | null>(null);
 private readonly sessionkey="user_session";
-    readonly isAuthenticated = computed(() =>
-    this.currentUser() !== null
-  );
+    readonly isAuthenticated = ()=>{
+      const user=this.getUser();
+      return user!==null;
+    }/* computed(() =>
+    this.currentUser() !== null 
+  );*/
 getUser():AuthenticatedUser|null{
  const sessionValue=sessionStorage.getItem(this.sessionkey)
  if(sessionValue&&sessionValue.length>0){
