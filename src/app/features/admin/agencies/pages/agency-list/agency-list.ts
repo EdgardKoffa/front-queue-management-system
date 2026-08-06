@@ -54,6 +54,10 @@ butonIcon = signal('pi pi-plus');
       field: 'name',
       header:this.forms_labels.name
     },
+{
+      field: 'phone',
+      header: this.forms_labels.phone
+    },
 
     {
       field: 'city',
@@ -93,7 +97,7 @@ butonIcon = signal('pi pi-plus');
       next: response => {
 
         const contents=response.data
-        this.agencies.set(contents);
+        this.agencies.set(contents.filter(p=>p.deletedAt===null));
 
         this.totalRecords.set(response.totalElements);
       

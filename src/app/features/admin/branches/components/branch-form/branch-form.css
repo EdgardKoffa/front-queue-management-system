@@ -1,0 +1,25 @@
+.grid{
+
+    display:grid;
+
+    grid-template-columns:repeat(2,1fr);
+
+    gap:24px;
+    padding:24px;
+
+}
+
+.actions{
+
+    margin-top:32px;
+
+    display:flex;
+
+    justify-content:flex-end;
+
+}
+.grid input{
+
+    width:100%;
+
+}

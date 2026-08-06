@@ -1,9 +1,275 @@
-import { Component } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
+import { ConfirmDialogService } from '../../../../../core/services/confir.form.dialog.service';
+import { StatusEnum } from '../../../../../shared/enums/status.enum';
+import { formsLabels, headerLabels } from '../../../../../shared/constants';
+import { NavigationService } from '../../../../../core/services/navigation.service';
+import { Branch } from '../../models/branch';
+import { IconType, SeverityType, TableColumn } from '../../../../../shared/models/table-column';
+import { BranchService } from '../../service/branch.service';
+import { ToastNotificationService } from '../../../../../core/services/notification.service';
+import { AlertDialogueService } from '../../../../../core/services/alert.dialogue.services';
+import { validationMessages } from '../../../../../shared/constants/validation.message';
+import { TableLazyLoadEvent } from 'primeng/table';
+import { PageRequest } from '../../../../../core/models/page-request';
+import { PageHeader } from '../../../../../shared/components/page-header/page-header';
+import { DataTable } from '../../../../../shared/components/data-table/data-table';
 
 @Component({
   selector: 'app-branch-list',
-  imports: [],
+  imports: [PageHeader,
+      DataTable] ,
   templateUrl: './branch-list.html',
   styleUrl: './branch-list.css',
 })
-export class BranchList {}
+export class BranchList {
+  private readonly toastmessges=validationMessages
+    readonly confirmService=inject(AlertDialogueService)
+    readonly tostMessageService=inject(ToastNotificationService)
+    private readonly branchService = inject(BranchService);
+  readonly forms_labels=formsLabels
+    private readonly router =inject(NavigationService);
+    readonly header_labels=headerLabels.branch
+  butonIcon = signal('pi pi-plus');
+    branches = signal<Branch[]>([]);
+  
+    loading = signal(false);
+  
+    totalRecords = signal(0);
+  
+    columns: TableColumn[] = [
+  
+      {
+        field: 'code',
+        header: 'Code',
+        
+      },
+  
+      {
+        field: 'name',
+        header:this.forms_labels.name
+      },
+      {
+        field: 'agencyName',
+        header:headerLabels.agency.title[0]
+      },
+  
+      {
+        field: 'city',
+        header: this.forms_labels.city
+      },
+  
+      {
+        field: 'status',
+        header: this.forms_labels.status,
+        isButton:true,
+  
+      }
+  
+    ];
+  
+    private confirmFormervice = inject(ConfirmDialogService<StatusEnum>);
+  
+     load(event: TableLazyLoadEvent) {
+
+  this.loading.set(true);
+
+  const request: PageRequest = {
+
+    page: Math.floor((event.first ?? 0) / (event.rows ?? 10)),
+    size: event.rows ?? 10,
+    sortField: event.sortField as string,
+    sortOrder: event.sortOrder === 1 ? 'asc' : 'desc'
+
+  };
+
+    this.branchService.findPage(request).subscribe({
+
+      next: response => {
+
+        const contents=response.data
+        this.branches.set(contents.filter(b=>b?.deletedAt===null));
+
+        this.totalRecords.set(response.totalElements);
+      
+        this.loading.set(false);
+
+      },
+
+      error: (err) => {
+        this.tostMessageService.error(
+          err?.message??this.toastmessges.toast_error404,
+          this.toastmessges.toast_error_summary
+        )
+        this.loading.set(false);
+        return 
+      }
+
+    });
+
+  }
+
+  createAgency() {
+
+    this.router.goToBranch(['new']);
+
+  }
+
+  detailsAgency(branch: Branch) {
+    if(branch.status!==StatusEnum.ACTIVE){
+      this.tostMessageService.warning(this.toastmessges.toast_warn_summary,this.toastmessges.agency_edit_warning)
+      return
+    }
+    this.router.goToBranch([branch.id]);
+
+  }
+
+  editAgency(branch: Branch) {
+    if(branch.status!==StatusEnum.ACTIVE){
+      this.tostMessageService.warning(this.toastmessges.toast_warn_summary,this.toastmessges.agency_detail_warning)
+      return
+    }
+    this.router.goToBranch([branch.id,'edit']);
+
+  }
+
+  deleteAgency=(branch: Branch) => {
+    this.confirmService.confirmDialog(
+      "p-button-danger",
+      `p-button-text`,
+      ()=>{
+         this.loading.set(true);
+
+            this.branchService.delete(
+                branch.id
+            ).subscribe({
+
+                next: () => {
+
+                    this.tostMessageService
+                    .success(this.toastmessges.toast_succes_summary,
+                      this.toastmessges.agency_success_deleted);
+                      //location.reload()
+                      const oldData=this.branches()
+                     
+                      const newData=oldData.filter((item)=>item.id!==branch.id)
+                      this.branches.set(newData)
+                   // this.load();
+                       this.loading.set(false);
+                },
+
+                error: (err) => {
+
+                    this.loading.set(false);
+
+                    this.tostMessageService.
+                    error(this.toastmessges.toast_error_summary, err?.message ??this.toastmessges.toast_error404);
+
+                }
+
+            });
+      },
+      ()=>{
+
+      },
+      "pi pi-trash",
+      "pi pi-ban",
+      true
+
+    )
+    
+  }
+ private changeAgencyStatus=(branch: Branch, status: StatusEnum) => {
+   
+         this.loading.set(true);
+
+            this.branchService.changeStatus(
+                branch.id,
+                status
+            ).subscribe({
+
+                next: (resp) => {
+
+                  if (resp?.success && resp?.data!=null) {
+                    this.tostMessageService
+                    .success(resp.message??this.toastmessges.toast_success_detail,
+                      this.toastmessges.toast_succes_summary);
+                      const oldData=this.branches()
+                     
+                      const newData=oldData.map((item)=>{
+                        if(item.id===branch.id){
+                          return resp.data
+                        }
+                        return item
+                      })
+
+                      this.branches.set(newData)
+                      
+                       this.loading.set(false);
+                    }else{
+                      this.loading.set(false);
+                      this.tostMessageService.
+                      error(this.toastmessges.toast_error_summary, resp?.message ??this.toastmessges.toast_error404);
+                    }
+                },
+
+                error: (err) => {
+
+                    this.loading.set(false);
+
+                    this.tostMessageService.
+                    error(this.toastmessges.toast_error_summary, err?.message ??this.toastmessges.toast_error404);
+
+                }
+
+            });
+     
+    
+  }
+
+  agencyStatusAction=(branch: Branch)=>{
+    this.confirmFormervice.open({
+
+      options: [
+        { label:this.forms_labels.active, value: StatusEnum.ACTIVE },
+        { label: this.forms_labels.disable, value: StatusEnum.INACTIVE },
+        { label: this.forms_labels.maintenance, value: StatusEnum.MAINTENANCE }
+      ],
+
+      onConfirm: (selectedReason) => {
+        console.log('Motif sélectionné :', selectedReason);
+        // Appeler API backend avec `selectedReason`
+       this.changeAgencyStatus(branch,selectedReason);
+      },
+      message: this.forms_labels.status,
+    });
+  }
+
+statusValue=(cellvalue: any)=>{
+ 
+  const val=cellvalue===StatusEnum.ACTIVE
+    ?this.toastmessges?.active
+    :cellvalue===StatusEnum.INACTIVE
+    ?this.toastmessges?.disable
+    :this.toastmessges?.maintenance;
+     console.log("status value",cellvalue," toastmessges ", val);
+ 
+    return val;
+  } 
+  statusIcon=(cellvalue: any)=>{
+    const icon:IconType= cellvalue===StatusEnum.ACTIVE
+    ?"pi pi-check"
+    :cellvalue===StatusEnum.INACTIVE
+    ?"pi pi-ban"
+    :"pi pi-wrench";
+    return icon
+  } 
+  statusSeverity=(cellvalue: any)=> {
+    const severity:SeverityType= cellvalue===StatusEnum.ACTIVE
+    ?"success"
+    :cellvalue===StatusEnum.INACTIVE
+    ?"danger"
+    :"warn";
+    return severity
+  } 
+ 
+}

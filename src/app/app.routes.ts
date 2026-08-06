@@ -6,7 +6,7 @@ import { RoleEnum } from './features/auth/enums/role-enum';
 
 /* Apps route urls to pages */
 export const routes: Routes = [
-   {
+  {
     path: '',
     redirectTo: RoutesBaseNames.LOGIN,
     pathMatch: 'full'
@@ -20,9 +20,9 @@ export const routes: Routes = [
   },
   {
     path: RoutesBaseNames.ADMIN,
-    canActivate:[authGuard,roleGuard],
-    data:{
-      roles:[
+    canActivate: [authGuard, roleGuard],
+    data: {
+      roles: [
         RoleEnum.ADMIN,
         RoleEnum.SUPER_ADMIN
       ]
@@ -30,119 +30,132 @@ export const routes: Routes = [
     loadComponent: () =>
       import('./features/admin/layout/admin-layout')
         .then(m => m.AdminLayout),
-        children:[
+    children: [
 
-        {
-            path:'dashboard',
-            canActivate:[authGuard,roleGuard],
-    data:{
-      roles:[
-        RoleEnum.ADMIN,
-        RoleEnum.SUPER_ADMIN
-      ]
-    },
-            loadComponent:()=>import(
-                './features/admin/dashboard/dashboard'
-            ).then(c=>c.Dashboard)
+      {
+        path: 'dashboard',
+        canActivate: [authGuard, roleGuard],
+        data: {
+          roles: [
+            RoleEnum.ADMIN,
+            RoleEnum.SUPER_ADMIN
+          ]
         },
+        loadComponent: () => import(
+          './features/admin/dashboard/dashboard'
+        ).then(c => c.Dashboard)
+      },
 
-   {
-    path: RoutesBaseNames.AGENCY,
-     canActivate:[authGuard,roleGuard],
-    data:{
-      roles:[
-        RoleEnum.ADMIN,
-        RoleEnum.SUPER_ADMIN
-      ]
-    },  
-     loadChildren: () =>import(
-      './features/admin/agencies/agency.routes'
-    ).then(m => m.AGENCY_ROUTES)
-  },
-
-        {
-            path:'',
-            redirectTo:'dashboard',
-            pathMatch:'full'
+      {
+        path: RoutesBaseNames.AGENCY,
+        canActivate: [authGuard, roleGuard],
+        data: {
+          roles: [
+            RoleEnum.ADMIN,
+            RoleEnum.SUPER_ADMIN
+          ]
         },
-       
+        loadChildren: () => import(
+          './features/admin/agencies/agency.routes'
+        ).then(m => m.AGENCY_ROUTES)
+      },
+      {
+        path: RoutesBaseNames.BRANCH,
+        canActivate: [authGuard, roleGuard],
+        data: {
+          roles: [
+            RoleEnum.ADMIN,
+            RoleEnum.SUPER_ADMIN
+          ]
+        },
+        loadChildren: () => import(
+          './features/admin/branches/branch-routes'
+        ).then(m => m.BRANCH_ROUTES)
+      },
+
+      {
+        path: '',
+        redirectTo: 'dashboard',
+        pathMatch: 'full'
+      },
+
 
     ]
 
   },
 
-/* 
-  {
-    path: RoutesConfig.KIOSK,
-     canActivate:[authGuard,roleGuard],
-    data:{
-      roles:[
-        RoleEnum.KIOSK,
-      ]
+  /* 
+    {
+      path: RoutesConfig.KIOSK,
+       canActivate:[authGuard,roleGuard],
+      data:{
+        roles:[
+          RoleEnum.KIOSK,
+        ]
+      },
+      loadComponent: () =>
+        import('./layouts/kiosk/kiosk-layout/kiosk-layout')
+          .then(m => m.KioskLayout)
     },
-    loadComponent: () =>
-      import('./layouts/kiosk/kiosk-layout/kiosk-layout')
-        .then(m => m.KioskLayout)
-  },
-
-  {
-    path: RoutesConfig.DISPLAY,
-     canActivate:[authGuard,roleGuard],
-    data:{
-      roles:[
-        RoleEnum.DISPLAY,
-      ]
+  
+    {
+      path: RoutesConfig.DISPLAY,
+       canActivate:[authGuard,roleGuard],
+      data:{
+        roles:[
+          RoleEnum.DISPLAY,
+        ]
+      },
+      loadComponent: () =>
+        import('./layouts/display/display-layout/display-layout')
+          .then(m => m.DisplayLayout)
     },
-    loadComponent: () =>
-      import('./layouts/display/display-layout/display-layout')
-        .then(m => m.DisplayLayout)
-  },
-
-  {
-    path: RoutesConfig.ADVERTISING,
-     canActivate:[authGuard,roleGuard],
-    data:{
-      roles:[
-        RoleEnum.ADVERTISING,
-      ]
+  
+    {
+      path: RoutesConfig.ADVERTISING,
+       canActivate:[authGuard,roleGuard],
+      data:{
+        roles:[
+          RoleEnum.ADVERTISING,
+        ]
+      },
+      loadComponent: () =>
+        import('./layouts/advertising/advertising-layout/advertising-layout')
+          .then(m => m.AdvertisingLayout)
     },
-    loadComponent: () =>
-      import('./layouts/advertising/advertising-layout/advertising-layout')
-        .then(m => m.AdvertisingLayout)
-  },
- */
- {
+   */
+  {
     path: '401',
     loadComponent: () =>
-        import('./features/errors/unauthorized/unauthorized')
-            .then(c => c.Unauthorized)
-},
+      import('./features/errors/unauthorized/unauthorized')
+        .then(c => c.Unauthorized)
+  },
 
-{
+  {
     path: '403',
     loadComponent: () =>
-        import('./features/errors/forbidden/forbidden')
-            .then(c => c.Forbidden)
-},
+      import('./features/errors/forbidden/forbidden')
+        .then(c => c.Forbidden)
+  },
 
-{
+  {
     path: '500',
     loadComponent: () =>
-        import('./features/errors/server-error/server-error')
-            .then(c => c.ServerError)
-},
-{
+      import('./features/errors/server-error/server-error')
+        .then(c => c.ServerError)
+  },
+  {
     path: '404',
     loadComponent: () =>
-        import('./features/errors/not-found/not-found')
-            .then(c => c.NotFound)
-}
-,
-{
+      import('./features/errors/not-found/not-found')
+        .then(c => c.NotFound)
+  }
+  ,
+  {
     path: '**',
     loadComponent: () =>
-        import('./features/errors/not-found/not-found')
-            .then(c => c.NotFound)
-}
+      import('./features/errors/not-found/not-found')
+        .then(c => c.NotFound)
+  }
 
 ];

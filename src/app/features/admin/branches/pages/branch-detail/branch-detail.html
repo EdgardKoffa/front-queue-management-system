@@ -1,1 +1,15 @@
-<p>branch-detail works!</p>
+<app-page-header
+
+    (action)="backward()" 
+    [title]="header_labels.title[1]" 
+    [subtitle]="header_labels.subtitle" 
+    [buttonLabel]="header_labels.backLabel">
+
+</app-page-header>
+<app-branch-detail-form
+    [formTitle]="header_labels.detail_formTittle"
+    [branch]="branch()"
+    [errorMessage]="errorMessage()"
+    >
+</app-branch-detail-form>
+

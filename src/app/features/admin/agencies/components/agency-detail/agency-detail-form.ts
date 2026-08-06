@@ -4,14 +4,14 @@ import { PRIMENG_IMPORTS } from '../../../../../shared/primeNG/primeng.imports';
 import { formsLabels } from '../../../../../shared/constants';
 
 @Component({
-  selector: 'app-agency-detail',
+  selector: 'app-agency-detail-form',
   imports: [
     ...PRIMENG_IMPORTS
   ],
-  templateUrl: './agency-detail.html',
-  styleUrl: './agency-detail.css',
+  templateUrl: './agency-detail-form.html',
+  styleUrl: './agency-detail-form.css',
 })
-export class AgencyDetail {
+export class AgencyDetailForm {
   
     readonly forms_labels=formsLabels
     agency = input<Agency | null>(null);

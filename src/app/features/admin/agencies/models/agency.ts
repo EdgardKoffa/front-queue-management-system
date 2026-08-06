@@ -18,4 +18,7 @@ export interface Agency{
 
     status:StatusEnum;
 
+    createdAt:Date
+    deletedAt:Date
+
 }

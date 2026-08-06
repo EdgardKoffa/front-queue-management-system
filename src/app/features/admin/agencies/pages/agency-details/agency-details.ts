@@ -8,12 +8,12 @@ import { AgencyService } from '../../services/agency.service';
 import { Agency } from '../../models/agency';
 import { validationMessages } from '../../../../../shared/constants/validation.message';
 import { ToastNotificationService } from '../../../../../core/services/notification.service';
-import { AgencyDetail } from '../../components/agency-detail/agency-detail';
+import { AgencyDetailForm } from '../../components/agency-detail/agency-detail-form';
 
 
 @Component({
   selector: 'app-agency-details',
-  imports: [   PageHeader,AgencyDetail,...PRIMENG_IMPORTS],
+  imports: [   PageHeader,AgencyDetailForm],
   templateUrl: './agency-details.html',
   styleUrl: './agency-details.css',
 })

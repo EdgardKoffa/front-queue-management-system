@@ -21,5 +21,6 @@ export interface Branch {
     agencyId:number;
 
     agencyName:string;
-
+    createdAt:Date
+    deletedAt:Date
 }

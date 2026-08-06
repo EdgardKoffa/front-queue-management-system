@@ -16,9 +16,9 @@ export class BranchService extends BaseCrudService<BranchResponse,BranchRequest>
 
     protected readonly apiUrl=Endpoints.branches.base;
 
-      changeStatus(id:number,status:StatusEnum):Observable<ApiResponse<AgencyResponse>>{
+      changeStatus(id:number,status:StatusEnum):Observable<ApiResponse<BranchResponse>>{
     
-            return this.http.patch <ApiResponse<AgencyResponse>>(`${this.apiUrl}/${id}/status/${status}`, {});
+            return this.http.patch <ApiResponse<BranchResponse>>(`${this.apiUrl}/${id}/status/${status}`, {});
     
         }
 

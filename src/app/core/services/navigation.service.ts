@@ -24,6 +24,14 @@ export class NavigationService {
   }
   }
 
+  goToBranch(endpoint?:any[]): void {
+    if(endpoint){
+    this.router.navigate([RoutesBaseNames.ADMIN,RoutesBaseNames.BRANCH,...endpoint]);
+  }else{
+     this.router.navigate([RoutesBaseNames.ADMIN,RoutesBaseNames.BRANCH]);
+  }
+  }
+
   goToCounter(): void {
     this.router.navigate([RoutesBaseNames.COUNTER]);
   }
