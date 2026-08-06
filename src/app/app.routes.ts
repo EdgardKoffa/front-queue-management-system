@@ -72,6 +72,19 @@ export const routes: Routes = [
           './features/admin/branches/branch-routes'
         ).then(m => m.BRANCH_ROUTES)
       },
+       {
+        path: RoutesBaseNames.COUNTER,
+        canActivate: [authGuard, roleGuard],
+        data: {
+          roles: [
+            RoleEnum.ADMIN,
+            RoleEnum.SUPER_ADMIN
+          ]
+        },
+        loadChildren: () => import(
+          './features/admin/counters/counters.routes'
+        ).then(m => m.Counter_ROUTES)
+      },
 
       {
         path: '',
