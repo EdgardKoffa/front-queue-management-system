@@ -1,1 +1,31 @@
-<p>counter-list works!</p>
+<app-page-header
+
+    (action)="create()" 
+    [title]="count_labels.title[1]" 
+    [subtitle]="count_labels.subtitle" 
+    [buttonLabel]="count_labels.buttonlabel" 
+    [buttonIcon]="butonIcon()"
+    >
+
+</app-page-header>
+
+<app-data-table
+
+    [columns]="columns"
+
+    [data]="counters()"
+
+    [loading]="loading()"
+
+    (lazyLoad)="load($event)"
+
+    [totalRecords]="totalRecords()"
+
+    (details)="details($event)"
+
+    (edit)="edit($event)"
+
+    (delete)="delete($event)"
+    >
+
+</app-data-table>

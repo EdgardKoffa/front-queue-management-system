@@ -25,6 +25,11 @@ export const Endpoints = {
     base: `${API}/branches`
 
   },
+   service: {
+
+    base: `${API}/services`
+
+  },
 
   users: {
 
@@ -35,6 +40,36 @@ export const Endpoints = {
   tickets: {
 
     base: `${API}/tickets`
+
+  },
+counters: {
+
+    base: `${API}/counters`
+
+  },
+  audit: {
+
+    base: `${API}/audit`
+
+  },
+  koisks: {
+
+    base: `${API}/kosks`
+
+  },
+  display: {
+
+    base: `${API}/display`
+
+  },
+  notification: {
+
+    base: `${API}/notifications`
+
+  },
+  appointement: {
+
+    base: `${API}/appointements`
 
   },
 

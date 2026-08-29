@@ -4,7 +4,7 @@ import { StatusEnum } from '../../../../../shared/enums/status.enum';
 import { formsLabels, headerLabels } from '../../../../../shared/constants';
 import { NavigationService } from '../../../../../core/services/navigation.service';
 import { Branch } from '../../models/branch';
-import { IconType, SeverityType, TableColumn } from '../../../../../shared/models/table-column';
+import { ColumnConfig, IconType, SeverityType, TableColumn } from '../../../../../shared/models/table-column';
 import { BranchService } from '../../service/branch.service';
 import { ToastNotificationService } from '../../../../../core/services/notification.service';
 import { AlertDialogueService } from '../../../../../core/services/alert.dialogue.services';
@@ -36,36 +36,7 @@ export class BranchList {
   
     totalRecords = signal(0);
   
-    columns: TableColumn[] = [
-  
-      {
-        field: 'code',
-        header: 'Code',
-        
-      },
-  
-      {
-        field: 'name',
-        header:this.forms_labels.name
-      },
-      {
-        field: 'agencyName',
-        header:headerLabels.agency.title[0]
-      },
-  
-      {
-        field: 'city',
-        header: this.forms_labels.city
-      },
-  
-      {
-        field: 'status',
-        header: this.forms_labels.status,
-        isButton:true,
-  
-      }
-  
-    ];
+    
   
     private confirmFormervice = inject(ConfirmDialogService<StatusEnum>);
   
@@ -271,5 +242,37 @@ statusValue=(cellvalue: any)=>{
     :"warn";
     return severity
   } 
- 
+ columns: ColumnConfig<Branch> [] = [
+  
+      {
+        field: 'code',
+        header: 'Code',
+        
+      },
+  
+      {
+        field: 'name',
+        header:this.forms_labels.name
+      },
+      {
+        field: 'agencyName',
+        header:headerLabels.agency.title[0]
+      },
+  
+      {
+        field: 'city',
+        header: this.forms_labels.city
+      },
+  
+      {
+        field: 'status',
+        header: this.forms_labels.status,
+        isButton:true,
+         actionFn:(val)=>this.agencyStatusAction(val),
+        iconFn:(val)=>this.statusIcon(val),
+        severityFn:(val)=>this.statusSeverity(val),
+        tooltipFn:(val)=>this.statusValue(val)
+      }
+  
+    ];
 }

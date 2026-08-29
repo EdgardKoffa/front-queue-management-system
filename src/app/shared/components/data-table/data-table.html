@@ -42,12 +42,11 @@
                 @if(column.isButton){
                     <td>
                         <p-button
-                            [icon]="statusIcon()(row[column.field])"
-                            [severity]="statusSeverity()(row[column.field])"
-                            pTooltip="{{statusValue()(row[column.field])}}"
-                            tooltipPosition="left"
-                            
-                            (onClick)="statusAction.emit(row)">
+                             [icon]="column.iconFn?.(row[column.field], row)"
+        [severity]="column.severityFn?.(row[column.field], row)"
+        pTooltip="{{ column.tooltipFn?.(row[column.field], row) }}"
+        tooltipPosition="left"
+        (onClick)="column.actionFn?.(row)">
                            
                         </p-button>
                     </td>

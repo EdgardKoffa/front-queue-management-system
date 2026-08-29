@@ -2,7 +2,7 @@ import { Component, inject, OnInit, signal } from '@angular/core';
 import { PageHeader } from '../../../../../shared/components/page-header/page-header';
 import { DataTable } from '../../../../../shared/components/data-table/data-table';
 import { Agency } from '../../models/agency';
-import { IconType, SeverityType, TableColumn } from '../../../../../shared/models/table-column';
+import { ColumnConfig, IconType, SeverityType, TableColumn } from '../../../../../shared/models/table-column';
 import { isLangFr } from '../../../../../shared/utils';
 import { AgencyService } from '../../services/agency.service';
 import { NavigationService } from '../../../../../core/services/navigation.service';
@@ -42,37 +42,7 @@ butonIcon = signal('pi pi-plus');
 
   totalRecords = signal(0);
 
-  columns: TableColumn[] = [
-
-    {
-      field: 'code',
-      header: 'Code',
-      
-    },
-
-    {
-      field: 'name',
-      header:this.forms_labels.name
-    },
-{
-      field: 'phone',
-      header: this.forms_labels.phone
-    },
-
-    {
-      field: 'city',
-      header: this.forms_labels.city
-    },
-
-    {
-      field: 'status',
-      header: this.forms_labels.status,
-      isButton:true,
-
-    }
-
-  ];
-
+  
   private confirmFormervice = inject(ConfirmDialogService<StatusEnum>);
 
   ngOnInit() {
@@ -283,5 +253,38 @@ statusValue=(cellvalue: any)=>{
     :"warn";
     return severity
   } 
-  
+  columns: ColumnConfig<Agency>[] = [
+
+    {
+      field: 'code',
+      header: 'Code',
+      
+    },
+
+    {
+      field: 'name',
+      header:this.forms_labels.name
+    },
+{
+      field: 'phone',
+      header: this.forms_labels.phone
+    },
+
+    {
+      field: 'city',
+      header: this.forms_labels.city
+    },
+
+    {
+      field: 'status',
+      header: this.forms_labels.status,
+      isButton:true,
+       actionFn:(val)=>this.agencyStatusAction(val),
+        iconFn:(val)=>this.statusIcon(val),
+        severityFn:(val)=>this.statusSeverity(val),
+        tooltipFn:(val)=>this.statusValue(val)
+    }
+
+  ];
+
 }

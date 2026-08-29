@@ -17,19 +17,5 @@ export class BranchDetailForm {
       branch = input<Branch | null>(null);
       formTitle = input('Create Branch');
        errorMessage = input<string | null>(null);
-    /*  constructor() {
-
-    effect(() => {
-
-        const agency = this.agency();
-
-        if (!agency) {
-
-            return;
-
-        }
-
-    });
-
-} */
+   
 }

@@ -8,3 +8,4 @@ export const setTheme=()=>{
 }
 
 export const getTheme=localStorage.getItem("dark")
+

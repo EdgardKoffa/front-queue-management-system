@@ -1,0 +1,14 @@
+<app-page-header
+
+    (action)="backward()" 
+    [title]="bankservice_labels.title[1]" 
+    [subtitle]="bankservice_labels.subtitle" 
+    [buttonLabel]="form_labels.backLabel" 
+    >
+</app-page-header>
+
+<app-service-form
+[bankService]="bank_service()"
+ [formTitle]="bankservice_labels.edit_formTittle"
+    (save)="update($event)">
+</app-service-form>

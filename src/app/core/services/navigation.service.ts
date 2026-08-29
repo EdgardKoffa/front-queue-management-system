@@ -32,37 +32,41 @@ export class NavigationService {
   }
   }
 
-  goToCounter(): void {
-    this.router.navigate([RoutesBaseNames.COUNTER]);
+  goToCounter(endpoint:any[]=[]): void {
+    this.router.navigate([RoutesBaseNames.ADMIN,RoutesBaseNames.COUNTER,...endpoint]);
   }
 
-  goToKiosk(): void {
-    this.router.navigate([RoutesBaseNames.KIOSK]);
+   goToBankService(endpoint:any[]=[]): void {
+    this.router.navigate([RoutesBaseNames.ADMIN,RoutesBaseNames.SERVICE,...endpoint]);
   }
 
-  goToDisplay(): void {
-    this.router.navigate([RoutesBaseNames.DISPLAY]);
+  goToKiosk(endpoint:any[]=[]): void {
+    this.router.navigate([RoutesBaseNames.KIOSK,...endpoint]);
   }
 
-  goToAdvertising(): void {
-    this.router.navigate([RoutesBaseNames.ADVERTISING]);
+  goToDisplay(endpoint:any[]=[]): void {
+    this.router.navigate([RoutesBaseNames.DISPLAY,...endpoint]);
   }
- goTo400(): void {
-    this.router.navigate(["/400"]);
+
+  goToAdvertising(endpoint:any[]=[]): void {
+    this.router.navigate([RoutesBaseNames.ADVERTISING,...endpoint]);
   }
-  goTo401(): void {
-    this.router.navigate(["/401"]);
+ goTo400(endpoint:any[]=[]): void {
+    this.router.navigate(["400",...endpoint]);
   }
-  goTo403(): void {
-    this.router.navigate(["/403"]);
+  goTo401(endpoint:any[]=[]): void {
+    this.router.navigate(["401",...endpoint]);
   }
-  goTo404(): void {
-    this.router.navigate(["/404"]);
+  goTo403(endpoint:any[]=[]): void {
+    this.router.navigate(["403",...endpoint]);
   }
-  goTo500(): void {
-    this.router.navigate(["/500"]);
+  goTo404(endpoint:any[]=[]): void {
+    this.router.navigate(["404",...endpoint]);
   }
-  goTo502_503(): void {
-    this.router.navigate(["/503"]);
+  goTo500(endpoint:any[]=[]): void {
+    this.router.navigate(["500",...endpoint]);
+  }
+  goTo502_503(endpoint:any[]=[]): void {
+    this.router.navigate(["503",...endpoint]);
   }
 }

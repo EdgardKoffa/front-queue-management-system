@@ -1,7 +1,7 @@
 import { Component, input, output } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { TableLazyLoadEvent, TableModule } from 'primeng/table';
-import {  TableColumn } from '../../models/table-column';
+import {  ColumnConfig, TableColumn } from '../../models/table-column';
 import { validationMessages } from '../../constants/validation.message';
 import { TooltipModule } from 'primeng/tooltip';
 
@@ -19,7 +19,7 @@ import { TooltipModule } from 'primeng/tooltip';
 export class DataTable {
  readonly statusEnumLabel = validationMessages;
   lazyLoad = output<TableLazyLoadEvent>();
-   columns = input.required<TableColumn[]>();
+   columns = input.required<ColumnConfig[]>();
     data = input<any[]>([]);
     loading = input(false);
     totalRecords = input(0);

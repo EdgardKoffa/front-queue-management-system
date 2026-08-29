@@ -70,7 +70,7 @@ export class BranchEdit {
                 next: response => {
                   if (!response?.data) {
                     this.message.error(
-                      this.validationMsg.toast_agency404_detail,
+                      this.validationMsg.toast_error404,
                       this.validationMsg.toast_error_summary);
 
                    // this.navigate.goToAdmin();

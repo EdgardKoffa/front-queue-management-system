@@ -1,1 +1,14 @@
-<p>counter-create works!</p>
+<app-page-header
+
+    (action)="backward()" 
+    [title]="count_labels.title[1]" 
+    [subtitle]="count_labels.subtitle" 
+    [buttonLabel]="count_labels.backLabel" 
+    >
+
+</app-page-header>
+
+<app-counter-form
+ [formTitle]="count_labels.create_formTittle"
+    (save)="create($event)">
+</app-counter-form>

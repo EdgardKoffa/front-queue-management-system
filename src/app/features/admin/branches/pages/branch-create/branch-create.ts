@@ -24,66 +24,64 @@ import { ToastNotificationService } from '../../../../../core/services/notificat
 })
 export class BranchCreate {
 
-  readonly branchLabel=headerLabels.branch
-
-  private readonly navigate= inject(NavigationService);
+  readonly branchLabel = headerLabels.branch
   readonly agencies = signal<Agency[]>([]);
   private readonly branchService = inject(BranchService);
-  private readonly lookup =inject(LookupService);
-      readonly branch = input<Branch>();
+  private readonly lookup = inject(LookupService);
+  readonly branch = input<Branch>();
 
-readonly validationMsg=validationMessages
-    private readonly router =
-        inject(NavigationService);
-readonly agencylabels=headerLabels.agency.title
+  readonly validationMsg = validationMessages
+  private readonly navigate =
+    inject(NavigationService);
+  readonly agencylabels = headerLabels.agency.title
 
-readonly header_labels=headerLabels.branch
-private readonly location= inject(Location);
-    backward(){
-      this.location.back();
-    }
-    private readonly message =
-        inject(ToastNotificationService);
+  readonly header_labels = headerLabels.branch
+  private readonly location = inject(Location);
+  backward() {
+    this.location.back();
+  }
+  private readonly message =
+    inject(ToastNotificationService);
 
-  constructor(){
+  constructor() {
 
     this.lookup
 
-        .getAgencies()
+      .getAgencies()
 
-        .subscribe({
+      .subscribe({
 
-            next:response=>{
-              if(response.success){
-                this.agencies.set(response?.data);
-              }else{
-                console.warn("response error list agency ",response)
-              }
-
-            }
-
-        });
-
-}
-
-        create(dto:BranchRequest){
-
-        this.branchService.create(dto)
-            .subscribe({
-              next:(response)=>{
-                console.info("created banch",response)
-                if(response.success&&response.data!=null){
-                this.message.success(this.validationMsg.toast_success_detail,this.validationMsg.toast_succes_summary)
-                this.router.goToBranch()
-                }else{
-                  this.message.error(`${response?.message??this.validationMsg.UNKNOWN_ERROR}`,this.validationMsg.toast_error_summary,5000)
-                }
-              },
-              error:(err)=>{
-                console.warn("create agency error",err)
-                this.message.error(`${err?.message??this.validationMsg.UNKNOWN_ERROR}`,this.validationMsg.toast_error_summary,5000)
-                return
-              }
-            })
+        next: response => {
+          if (response.success) {
+            this.agencies.set(response?.data);
+          } else {
+            console.warn("response error list agency ", response)
           }
+
+        }
+
+      });
+
+  }
+
+  create(dto: BranchRequest) {
+
+    this.branchService.create(dto)
+      .subscribe({
+        next: (response) => {
+          console.info("created banch", response)
+          if (response.success && response.data != null) {
+            this.message.success(this.validationMsg.toast_success_detail, this.validationMsg.toast_succes_summary)
+            this.navigate.goToBranch()
+          } else {
+            this.message.error(`${response?.message ?? this.validationMsg.UNKNOWN_ERROR}`, this.validationMsg.toast_error_summary, 5000)
+          }
+        },
+        error: (err) => {
+          console.warn("create agency error", err)
+          this.message.error(`${err?.message ?? this.validationMsg.UNKNOWN_ERROR}`, this.validationMsg.toast_error_summary, 5000)
+          return
+        }
+      })
+  }
 }

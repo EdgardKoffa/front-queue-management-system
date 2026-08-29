@@ -26,6 +26,8 @@ import { TableModule } from 'primeng/table';
 import { TagModule } from 'primeng/tag';
 import { TabsModule } from 'primeng/tabs';
 import { SelectModule } from 'primeng/select';
+import { InputNumberModule } from 'primeng/inputnumber';
+import { TextareaModule } from 'primeng/textarea';
 
 
 export const PRIMENG_IMPORTS = [
@@ -56,4 +58,6 @@ export const PRIMENG_IMPORTS = [
   TagModule,
   TabsModule,
   SelectModule,
+  InputNumberModule,
+  TextareaModule
 ] as const;

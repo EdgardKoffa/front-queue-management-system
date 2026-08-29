@@ -1,0 +1,59 @@
+<p-card 
+[header]="formTitle()"
+
+>
+<div class="w-full flex flex-col gap-3">
+    <div class="w-full items-center gap-5">
+        <div class="w-1/3"></div>
+        <div class="w-2/3"></div>
+    </div>
+   <div class="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
+   <div class="bg-gray-50 dark:bg-gray-900  p-2 rounded  shadow-sm gap-3 items-center">
+<span class="font-medium">{{forms_labels.prefix}} : </span>
+    <span class="font-bold text-blue-800">{{bankService()?.prefix}}</span>
+  </div>
+    <div class="bg-gray-50 dark:bg-gray-900  p-2 rounded  shadow-sm gap-3 items-center">
+    <span class="font-medium">Code : </span>
+    <span class="font-bold text-blue-800">{{bankService()?.code}}</span>
+  </div>
+ 
+   <div class="bg-gray-50 dark:bg-gray-900  p-2 rounded  shadow-sm gap-3 items-center">
+<span class="font-medium">{{forms_labels.name}} : </span>
+    <span class="font-bold text-blue-800">{{bankService()?.name}}</span>
+  </div>
+
+   <div class="bg-gray-50 dark:bg-gray-900  p-2 rounded  shadow-sm gap-3 items-center">
+<span class="font-medium">{{branchLable.title[0]}} : </span>
+    <span class="font-bold text-blue-800">{{bankService()?.branchName}}</span>
+   </div>
+
+  <div class="bg-gray-50 dark:bg-gray-900  p-2 rounded  shadow-sm gap-3 items-center">
+<span class="font-medium">{{forms_labels.estimate_time}} : </span>
+    <span class="font-bold text-blue-800">{{bankService()?.estimatedDurationMinutes}}</span>
+   </div>
+
+    <div class="bg-gray-50 dark:bg-gray-900  p-2 rounded  shadow-sm gap-3 items-center">
+<span class="font-medium">{{forms_labels.priority}} : </span>
+    <span class="font-bold text-blue-800">{{bankService()?.priority}}</span>
+   </div>
+
+   <div class="bg-gray-50 dark:bg-gray-900  p-2 rounded  shadow-sm gap-3 items-center">
+    <span class="font-medium">{{forms_labels.isActif[0]}} :</span>
+        @if (bankService()?.active) {
+             <span class="font-bold text-green-800">
+            {{forms_labels.active}}
+            </span>
+        }
+        @else { 
+             <span class="font-bold text-red-600">
+            {{forms_labels.disable}}
+             </span>
+        }
+  </div>
+  <div class="bg-gray-50 dark:bg-gray-900  p-2 rounded  shadow-sm gap-3 items-center">
+<span class="font-medium">Description : </span>
+    <span class="font-bold text-blue-800">{{bankService()?.description}}</span>
+   </div>
+</div>
+</div>
+</p-card>

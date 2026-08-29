@@ -18,6 +18,7 @@ export class LookupService {
 
     private readonly branchService = inject(BranchService);
 
+  //  private readonly userService = inject();
     getAgencies(): Observable<ApiResponse<Agency[]>> {
 
         return this.agencyService.findAll();
@@ -46,5 +47,10 @@ export class LookupService {
         return this.branchService.findAll();
 
     }
+
+/* getUsers():{
+
+        return 
+    } */
 
 }

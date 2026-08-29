@@ -33,13 +33,14 @@ export const SIDEBAR_MENU: MenuItem[] = [
             {
                 label:MENU_LABELS.COUNTER ,
                 icon: 'pi pi-desktop',
-                routerLink: RoutesBaseNames.COUNTER
+                routerLink: RoutesBaseNames.COUNTER,
+
             },
 
             {
                 label: MENU_LABELS.BANK_SERVICE,
                 icon: 'pi pi-list',
-                routerLink: RoutesBaseNames.COUNTER+'/services'
+                routerLink: RoutesBaseNames.SERVICE+''
             }
 
         ]

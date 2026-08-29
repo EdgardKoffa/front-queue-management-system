@@ -3,20 +3,20 @@ Front main pages route names
 */
 export const RoutesBaseNames = {
 
-    LOGIN:"login",
+  LOGIN:"login",
 
-    ADMIN:"admin",
+  ADMIN:"admin",
 
-    COUNTER:"counter",
+  COUNTER:"counters",
 
-    KIOSK:"kiosk",
+  KIOSK:"kiosk",
 
-    DISPLAY:"display",
+  DISPLAY:"display",
 
-    ADVERTISING:"advertising",
+  ADVERTISING:"advertising",
 
-    SERVICE:'service',
-
+  SERVICE:'services',//'counters/services',
+  TICKET:'services',
   AGENCY:"agencies",//agency=>branche
   BRANCH:"branches",//agency=>branche
 

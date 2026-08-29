@@ -1,0 +1,86 @@
+<p-card [header]="formTitle()" class="w-full p-4">
+
+    <form [formGroup]="form" (ngSubmit)="submit()">
+
+        <div class="grid">
+
+            <p-floatlabel variant="on">
+
+                <input pInputText formControlName="code">
+
+                <label>Code</label>
+
+            </p-floatlabel>
+
+            <p-floatlabel variant="on">
+
+                <input pInputText formControlName="name">
+
+                <label>{{forms_labels.name}}</label>
+
+            </p-floatlabel>
+            <p-floatlabel variant="on">
+
+                <input pInputText formControlName="prefix">
+
+                <label>{{forms_labels.prefix}}</label>
+
+            </p-floatlabel>
+
+            <p-floatlabel variant="on">
+
+                <p-select class="w-full" formControlName="branchId" [options]="branches()" optionLabel="name"
+                    optionValue="id">
+
+                </p-select>
+
+                <label>{{branchLabel[0]}}</label>
+
+            </p-floatlabel>
+             <p-floatlabel variant="on">
+
+                <p-input-number formControlName="estimatedDurationMinutes"
+                 [showButtons]="true"
+                  inputId="basic-inputnumber"
+                  [min]="0" />
+
+                <label>{{forms_labels.estimate_time}}</label>
+
+            </p-floatlabel>
+             <p-floatlabel variant="on">
+
+                <p-input-number formControlName="priority"
+                 [showButtons]="true"
+                  inputId="basic-inputnumber"
+                  [min]="0" />
+
+                <label>{{forms_labels.priority}}</label>
+
+            </p-floatlabel>
+            <div class="w-full flex flex-col">
+                <label class="cursor-pointer" for="active" >{{forms_labels.active}}</label>
+                <p-toggleswitch id="active" class="w-full" formControlName="active" >
+                </p-toggleswitch>
+            </div>
+            <p-floatlabel variant="on">
+                <textarea id="desc"  rows="4" class="w-full"  pTextarea [autoResize]="true" formControlName="description"></textarea>
+                <label for="desc" >Description</label>
+            </p-floatlabel>
+
+
+        </div>
+
+        <div class="actions gap-4">
+            <p-button pClass="self-left" type="button" severity="secondary" icon="pi pi-arrow-left" size="large"
+                (onClick)="backToList()" [label]="forms_labels.back">
+
+            </p-button>
+            <p-button type="submit" icon="pi pi-save" size="large" [label]="forms_labels.save">
+
+            </p-button>
+
+        </div>
+
+    </form>
+
+</p-card>

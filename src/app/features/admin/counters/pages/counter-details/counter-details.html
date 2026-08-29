@@ -1,1 +1,15 @@
-<p>counter-details works!</p>
+<app-page-header
+
+    (action)="backward()" 
+    [title]="header_labels.title[1]" 
+    [subtitle]="header_labels.subtitle" 
+    [buttonLabel]="header_labels.backLabel">
+
+</app-page-header>
+<app-counter-detail-form
+    [formTitle]="header_labels.detail_formTittle"
+    [counter]="counter()"
+    [errorMessage]="errorMessage()"
+    >
+</app-counter-detail-form>
+
