@@ -40,6 +40,10 @@ export class NavigationService {
     this.router.navigate([RoutesBaseNames.ADMIN,RoutesBaseNames.SERVICE,...endpoint]);
   }
 
+  goToUsers(endpoint:any[]=[]): void {
+    this.router.navigate([RoutesBaseNames.ADMIN,RoutesBaseNames.USERS,...endpoint]);
+  }
+
   goToKiosk(endpoint:any[]=[]): void {
     this.router.navigate([RoutesBaseNames.KIOSK,...endpoint]);
   }
@@ -69,4 +73,5 @@ export class NavigationService {
   goTo502_503(endpoint:any[]=[]): void {
     this.router.navigate(["503",...endpoint]);
   }
+  
 }

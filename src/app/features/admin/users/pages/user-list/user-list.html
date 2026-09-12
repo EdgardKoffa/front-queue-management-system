@@ -1,0 +1,31 @@
+<app-page-header
+
+    (action)="create()" 
+    [title]="user_labels.title[1]" 
+    [subtitle]="user_labels.subtitle" 
+    [buttonLabel]="user_labels.buttonlabel" 
+    [buttonIcon]="butonIcon()"
+    >
+
+</app-page-header>
+
+<app-data-table
+
+    [columns]="columns"
+
+    [data]="users()"
+
+    [loading]="loading()"
+
+    (lazyLoad)="load($event)"
+
+    [totalRecords]="totalRecords()"
+
+    (details)="details($event)"
+
+    (edit)="edit($event)"
+
+    (delete)="delete($event)"
+    >
+
+</app-data-table>

@@ -264,20 +264,7 @@ export class CounterList {
         message: this.form_labels.status,
       });
     }
-  isActiveAction=(counter: Counter)=>{
-      this.confirmIsactivateFormervice.open({
-       
-        options:formedSelectOptions([this.form_labels.active,this.form_labels.disable],
-         [true,false]),
   
-        onConfirm: (selectedReason) => {
-          console.log('Motif sélectionné :', selectedReason);
-          // Appeler API backend avec `selectedReason`
-         this.changeBooleanAction(counter,selectedReason);
-        },
-        message: this.form_labels.status,
-      });
-    }
   /* statusValue=(cellvalue: any)=>{
    
     const val=cellvalue===StatusEnum.ACTIVE
@@ -332,6 +319,21 @@ export class CounterList {
       :"pi pi-wrench"; */
       return optionIcon
     } 
+    
+    isActiveAction=(counter: Counter)=>{
+      this.confirmIsactivateFormervice.open({
+       
+        options:formedSelectOptions([this.form_labels.active,this.form_labels.disable],
+         [true,false]),
+  
+        onConfirm: (selectedReason) => {
+          console.log('Motif sélectionné :', selectedReason);
+          // Appeler API backend avec `selectedReason`
+         this.changeBooleanAction(counter,selectedReason);
+        },
+        message: this.form_labels.status,
+      });
+    }
     isActiveIcon=(cellvalue: any)=>{
       const icon:IconType= cellvalue===true
       ?"pi pi-check"

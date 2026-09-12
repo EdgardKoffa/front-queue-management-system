@@ -89,6 +89,17 @@ export const headerLabels = {
          create_formTittle: isLangFr ? "Enregistrer un nouveau service banquaire" : "Register new bank service",
         edit_formTittle: isLangFr ? "Modifier un service banquaire" : "Edit bank service",
         detail_formTittle: isLangFr ? "Détails d'un service banquaire" : "Bank service details"
+    },
+    users:{
+        title: isLangFr ? ["Utilisateur", "Utilisateurs"] : ["User", "Users"],
+        subtitle: isLangFr ? "Gestion des utilisateurs" : "Users Management",
+        buttonlabel: isLangFr ? "Ajouter un utilisateur" : "Add new user",
+         
+        backLabel: isLangFr ? "Retour" : "Back",
+
+        create_formTittle: isLangFr ? "Enregistrer un nouvel utilisateur" : "Register new bank user",
+        edit_formTittle: isLangFr ? "Modifier un  utilisateur" : "Edit user",
+        detail_formTittle: isLangFr ? "Détails d'un utilisateur" : "user's details"
     }
 }
 
@@ -105,8 +116,9 @@ export const formsLabels = {
 
     backLabel: isLangFr ? "Retour" : "Back",
     L_NAME: isLangFr ? "Nom" : "Lastname",
-
+    username: isLangFr ? "Nom d'utilisateur" : "UserName",
     EMAIL: isLangFr ? "Email" : "Email",
+
 
     TICKET_NUMBER: isLangFr ? "Numéro du ticket" : "Ticket's number",
     back: isLangFr ? "Retour" : "Back",
@@ -122,6 +134,7 @@ export const formsLabels = {
     select_reason: isLangFr ? "Veuillez sélectionner." : "Please select.",
     yes_no:isLangFr?["Oui","Non"]:["Yes","No"],
     tue_false:isLangFr?["Vrai","Faux"]:["True","False"],
+    isLocked: isLangFr ? "Bloqué" : "Locked",
     view: isLangFr ? "Voir" : "View",
     edit: isLangFr ? "Modifier" : "Edit",
     delete: isLangFr ? "Supprimer" : "Delete",

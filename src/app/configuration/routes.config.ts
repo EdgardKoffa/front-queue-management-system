@@ -16,8 +16,9 @@ export const RoutesBaseNames = {
   ADVERTISING:"advertising",
 
   SERVICE:'services',//'counters/services',
-  TICKET:'services',
+  TICKET:'tickets',
   AGENCY:"agencies",//agency=>branche
   BRANCH:"branches",//agency=>branche
+  USERS:"users"
 
 } as const;

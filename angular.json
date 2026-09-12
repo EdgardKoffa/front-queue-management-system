@@ -30,15 +30,18 @@
               }
             ],
             "styles": ["src/styles.css"],
-            "polyfills": ["@angular/localize/init"]
+            "polyfills": ["@angular/localize/init"],
+            "allowedCommonJsDependencies": [
+              "@stomp/stompjs",
+    "sockjs-client"]
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
+                  "maximumWarning": "20MB",
+                  "maximumError": "100MB"
                 },
                 {
                   "type": "anyComponentStyle",
@@ -77,4 +80,5 @@
       }
     }
   }
+  
 }

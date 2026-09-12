@@ -51,7 +51,7 @@ export const SIDEBAR_MENU: MenuItem[] = [
 
         icon: 'pi pi-ticket',
 
-        routerLink: RoutesBaseNames.COUNTER//+'/ticket'
+        routerLink: RoutesBaseNames.TICKET//+'/ticket'
     },
 
     {
@@ -59,7 +59,7 @@ export const SIDEBAR_MENU: MenuItem[] = [
 
         icon: 'pi pi-users',
 
-        routerLink: RoutesBaseNames.ADMIN+'/users'
+        routerLink: RoutesBaseNames.USERS
     },
 
     {
@@ -76,7 +76,8 @@ export const SIDEBAR_MENU: MenuItem[] = [
         icon: 'pi pi-cog',
 
         routerLink: RoutesBaseNames.ADMIN+'settings'
-    }
+    },
+
 
 ];
 

@@ -1,18 +1,19 @@
-<div class="layout ">
+<div>
+<div class="layout">
   <aside class="sidebar">
     <app-sidebar />
   </aside>
-
-  <div class="content">
-    <header>
-    <app-topbar />
+    <div class="content">
+  <header>
+      <app-topbar />
     </header>
-    <main class="page">
-      <router-outlet />
-    </main>
-
-    <footer>
+      <main class="page">
+        <router-outlet />
+      </main>
+    </div>
+</div>
+ <footer>
       <app-footer />
     </footer>
-  </div>
+    
 </div>

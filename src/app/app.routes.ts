@@ -98,6 +98,19 @@ export const routes: Routes = [
           './features/admin/counters/counters.routes'
         ).then(m => m.Counter_ROUTES)
       },
+       {
+        path: RoutesBaseNames.USERS,
+        canActivate: [authGuard, roleGuard],
+        data: {
+          roles: [
+            RoleEnum.ADMIN,
+            RoleEnum.SUPER_ADMIN
+          ]
+        },
+        loadChildren: () => import(
+          './features/admin/users/users.routes'
+        ).then(m => m.User_ROUTES)
+      },
       {
         path: '',
         redirectTo: 'dashboard',
