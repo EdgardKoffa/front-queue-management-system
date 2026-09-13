@@ -1,3 +1,5 @@
+import { environment } from "../../environments/environments";
+
 export const ApplicationConfig = {
 
   production: false,
@@ -6,9 +8,9 @@ export const ApplicationConfig = {
 
   version: '1.0.0',
 
-  apiBaseUrl: 'http://localhost:2026/api/v1',
+  apiBaseUrl:`${environment.apiUrl}`, //'http://localhost:2026/api/v1',//https://queue-management-system-4syh.onrender.com/api/v1
 
-  websocketUrl: 'http://localhost:2026/ws'
+  websocketUrl: `${environment.wsUrl}`,//'http://localhost:2026/ws'
 
 } as const;
 
