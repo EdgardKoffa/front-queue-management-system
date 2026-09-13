@@ -66,7 +66,7 @@ export const headerLabels = {
         assign_label:isLangFr ?"Assigner un opérateur ":"Assign an operator",
         release_label:isLangFr ?"Retirer l'opérateur ":"Release oerator",
         
-         create_formTittle: isLangFr ? "Formulair d'ajout d' un guichet" : "Add new counter Form",
+         create_formTittle: isLangFr ? "Formulair d'ajout d' un guichet" : "Add new counter",
         edit_formTittle: isLangFr ? "Modification d'un guichet" : "Counter edition",
         detail_formTittle: isLangFr ? "Détails d'un guichet" : "Counter details",
 
