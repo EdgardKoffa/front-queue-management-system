@@ -1,0 +1,5 @@
+{
+  "name": "ns-global-queue-front",
+  "compatibility_date": "2025-09-12",
+  "assets": { "directory": "./dist/ns-global-queue-front/browser" }
+}
