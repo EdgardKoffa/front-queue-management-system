@@ -1,9 +1,6 @@
-import { environment } from "../../environments/environments";
+import { environment } from "../../environments/environment";
 
 export const ApplicationConfig = {
-
-  production: false,
-
   appName: 'NS Global Queue Management',
 
   version: '1.0.0',
