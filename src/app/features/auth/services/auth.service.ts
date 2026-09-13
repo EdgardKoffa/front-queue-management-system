@@ -8,6 +8,7 @@ import { LoginResponse } from '../models/login-response';
 import { Endpoints } from '../../../configuration/endpoint';
 import { LoginRequest } from '../models/login-request';
 import { NavigationService } from '../../../core/services/navigation.service';
+import { environment } from '../../../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
@@ -23,7 +24,9 @@ export class AuthService {
 
   login(request: LoginRequest): Observable<LoginResponse> {
    // console.log("=======> request",request)
-    return this.http
+   console.log('Mode production, API =', environment.apiUrl,"environment.production",environment.production);
+
+   return this.http
       .post<LoginResponse>(Endpoints.auth.login, request)
       .pipe(
         tap(response => {
